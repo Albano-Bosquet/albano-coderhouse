@@ -1,0 +1,3 @@
+1. django-admin startproject nombre .
+2. py manage.py runserver
+3. py manage.py startupp inicio
