@@ -9,3 +9,6 @@ class CargarPlanta(forms.Form):
     autofloreciente = forms.BooleanField(required=False)
     fotoperiodica = forms.BooleanField(required=False)
     foto = forms.ImageField(required=False)
+    
+class BuscarPlanta(forms.Form):
+    nombre = forms.CharField(max_length=50, required=False)

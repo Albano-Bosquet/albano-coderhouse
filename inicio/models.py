@@ -9,3 +9,6 @@ class Planta(models.Model):
     autofloreciente = models.BooleanField(default=False) 
     fotoperiodica = models.BooleanField(default=False) 
     foto = models.ImageField(null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.nombre}, {self.tipo}\n{self.foto}'

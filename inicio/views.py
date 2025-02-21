@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
 from inicio.models import Planta
-from inicio.forms import CargarPlanta
+from inicio.forms import CargarPlanta, BuscarPlanta
 
 # Create your views here.
 #request es un objeto que contiene toda la información de la petición web
@@ -39,4 +39,9 @@ def crear_planta(request):
     return render(request, 'inicio/crear_planta.html', {'formulario' : formulario})
 
 def listado_de_plantas(request):
-    return render(request, 'inicio/listado_de_plantas.html')
+    plantas = Planta.objects.all()
+    formulario = BuscarPlanta(request.GET)
+    if formulario.is_valid():
+        nombre_a_buscar = formulario.cleaned_data.get('nombre')
+        plantas = Planta.objects.filter(nombre__icontains=nombre_a_buscar)
+    return render(request, 'inicio/listado_de_plantas.html', {'plantas' : plantas, 'formulario' : formulario})
