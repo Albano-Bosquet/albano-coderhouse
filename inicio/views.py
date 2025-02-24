@@ -12,9 +12,7 @@ def inicio(request):
     #return HttpResponse('<h1>PAGINA DE INICIO</h1>')
     return render(request, 'inicio/inicio.html') 
 
-def saludo(request, nombre, apellido):
-    hora_actual = datetime.now()
-    return render(request, 'inicio/saludo.html', {'hora': hora_actual, 'nombre': nombre, 'apellido': apellido})
+
 
 def crear_planta(request):
     formulario = CargarPlanta()
