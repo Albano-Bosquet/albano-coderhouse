@@ -20,7 +20,7 @@ def crear_planta(request):
     formulario = CargarPlanta()
     
     if request.method == "POST":
-        formulario = CargarPlanta(request.POST)
+        formulario = CargarPlanta(request.POST, request.FILES)
         if formulario.is_valid():
             nombre = formulario.cleaned_data.get('nombre')
             tipo = formulario.cleaned_data.get('tipo')
