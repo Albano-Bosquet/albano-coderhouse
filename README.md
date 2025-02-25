@@ -1,4 +1,4 @@
-# Plataforma de gestion de plantas - Creada por Albano Bosquet - Curso Python Coderhouse
+# 🍁 Plataforma de gestion de plantas - Creada por Albano Bosquet - Curso Python Coderhouse 🍁
 
 ## Se crearon 3 apartados
 
