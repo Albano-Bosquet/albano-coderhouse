@@ -50,7 +50,7 @@ input[type="submit"]:hover {
 
 /* Estilo para el contenedor de las plantas */
 .container {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Esto asegura que las tarjetas se centren */
@@ -59,12 +59,13 @@ input[type="submit"]:hover {
 
 /* Estilo de las tarjetas */
 .plant-card {
-    width: 300px; /* El ancho fijo de cada tarjeta */
+    width: 100px; /* El ancho fijo de cada tarjeta */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
     background-color: #fff;
     text-align: center;
+    height: 2000px;
 }
 
 /* Estilo de la imagen dentro de la tarjeta */

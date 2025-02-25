@@ -24,7 +24,6 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;  /* Ocupa toda la pantalla */
-    padding-top: 60px; /* Deja espacio para el navbar */
 }
 
 /* Caja del formulario */
