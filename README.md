@@ -1,6 +1,6 @@
 # Plataforma de gestion de plantas - Creada por Albano Bosquet - Curso Python Coderhouse
 
-Se crearon 3 apartados
+## Se crearon 3 apartados
 
 * INICIO
 ![1](https://github.com/user-attachments/assets/d8e642ff-b232-4c3d-a2da-76f946a7c597)
