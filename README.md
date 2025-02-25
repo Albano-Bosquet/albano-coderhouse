@@ -1,3 +1,3 @@
 # coderhouse
 
-![Texto alternativo](images/1.png)
+![Texto alternativo](https://imgur.com/diVby4E)
