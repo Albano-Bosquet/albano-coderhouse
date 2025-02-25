@@ -1,3 +1,3 @@
 # coderhouse
 
-![Texto alternativo](static/images/1.png)
+![Texto alternativo](images/1.png)
