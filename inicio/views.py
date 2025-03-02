@@ -4,12 +4,7 @@ from datetime import datetime
 from inicio.models import Planta
 from inicio.forms import CargarPlanta, BuscarPlanta
 
-# Create your views here.
-#request es un objeto que contiene toda la información de la petición web
 def inicio(request):
-    #return HttpResponse({'clave' : 'valor'})
-    #return HttpResponse("Hola soy la vista de inicio")
-    #return HttpResponse('<h1>PAGINA DE INICIO</h1>')
     return render(request, 'inicio/inicio.html') 
 
 

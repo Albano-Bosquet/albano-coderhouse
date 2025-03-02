@@ -23,7 +23,16 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;  /* Ocupa toda la pantalla */
+    min-height: 100vh; /* Cambiar de height a min-height */
+    padding-top: 70px; /* Ajustar según la altura del navbar */
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Cambiar de height a min-height */
+    padding-top: 70px; /* Ajustar según la altura del navbar */
 }
 
 /* Caja del formulario */
@@ -80,3 +89,4 @@ button {
 button:hover {
     background-color: #218838;
 }
+
