@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="main-content">
+    <div class="form-container">
+        <h3>MODIFICACION DE PLANTA</h3>
+        <div >
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{formulario}}
+
+            <div style='padding: 20px;'
+            onclick="return confirm('¿Estas seguro de los cambios realizados?');">
+                <button type="submit" class="btn btn-success">Modificar</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+{% endblock contenido %}

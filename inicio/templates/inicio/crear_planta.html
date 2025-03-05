@@ -3,7 +3,7 @@
 {% block contenido %}
 <div class="main-content">
     <div class="form-container">
-        <h3>Carga de Planta Nueva</h3>
+        <h3>CARGA DE NUEVA PLANTA</h3>
         <div >
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -35,8 +35,9 @@
 
             <label for="{{ formulario.foto.id_for_label }}">Foto:</label>
             {{ formulario.foto }}
-
-            <button type="submit" class="btn btn-success">Cargar</button>
+            <div style='padding: 20px;'>
+                <button type="submit" class="btn btn-success">Cargar</button>
+            </div>
         </form>
     </div>
     </div>

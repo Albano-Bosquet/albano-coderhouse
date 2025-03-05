@@ -1,4 +1,5 @@
 from django import forms
+from inicio.models import Planta
 
 class CargarPlanta(forms.Form):
     nombre = forms.CharField(max_length=50)
@@ -12,3 +13,8 @@ class CargarPlanta(forms.Form):
     
 class BuscarPlanta(forms.Form):
     nombre = forms.CharField(max_length=50, required=False)
+    
+class ModificarPlanta(forms.ModelForm):
+    class Meta:
+        model = Planta
+        fields = "__all__"

@@ -1,26 +1,21 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
+<body>
+    <section class="py-5">
+        <div class="container px-4 px-lg-1 mt-5">
+            <!-- Formulario de búsqueda centrado y con alineación correcta -->
+            <form method="get" action="{% url 'listado_de_plantas' %}" class="mb-5 text-center">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-6 col-lg-4 d-flex">
+                        <input type="text" name="nombre" class="form-control" placeholder="Buscar por nombre" value="{{ formulario.nombre.value|default:'' }}">
+                    </div>
+                    <div class="col-md-6 col-lg-2 d-flex">
+                        <button type="submit" class="btn btn-success w-100">Buscar</button>
+                    </div>
+                </div>
+            </form>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-1 mt-5">
             {% if plantas %}
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 {% for planta in plantas %}
@@ -34,21 +29,41 @@
                         {% endif %}
                         <p class="card-text">{{planta.descripcion}}</p>
                         <ul class="list-unstyled">
-                        <li>🔰 Contenido THC: {{planta.contenido_thc}}</li>
-                        <li>🔰 Contenido CBD: {{planta.contenido_cbd}}</li>
-                        <li>🔰 Autofloreciente: {{planta.autofloreciente}}</li>
-                        <li>🔰 Fotoperiódica: {{planta.fotoperiodica}}</li>
-                        </ul>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Modificar</a></div>
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Eliminar</a></div>
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Historial</a></div>
-                        </div>
+                            <li>🔰 Tipo: {{planta.tipo}}</li>
+                            <li>🔰 Contenido THC: {{planta.contenido_thc}}%</li>
+                            <li>🔰 Contenido CBD: {{planta.contenido_cbd}}%</li>
+                            {% if planta.autofloreciente %}
+                                <li>🔰 Autofloreciente: Si</li>
+                            {% else %}
+                                <li>🔰 Autofloreciente: No</li>
+                            {% endif %}
+                            {% if planta.fotoperiodica %}
+                                <li>🔰 Fotoperiódica: Si</li>
+                            {% else %}
+                                <li>🔰 Fotoperiódica: No</li>
+                            {% endif %}
+                        </ul>                        
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                            <a class="btn btn-secondary btn-lg w-100 mt-auto" href="#">Historial</a>
+                        </div>       
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center gap-2">
+                            <!-- Botón Modificar -->
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'modificar_planta' planta.id %}"
+                            style="transition: 0.3s; border-color: black;" 
+                            onmouseover="this.style.backgroundColor='blue'; this.style.color='white'; this.style.borderColor='blue';" 
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';">
+                            Modificar
+                            </a>
+
+                            <!-- Botón Eliminar con confirmación -->
+                            <a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar_planta' planta.id %}"
+                            style="transition: 0.3s; border-color: black;" 
+                            onmouseover="this.style.backgroundColor='red'; this.style.color='white'; this.style.borderColor='red';" 
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';"
+                            onclick="return confirm('¿Seguro que deseas eliminar esta planta?');">
+                            Eliminar
+                            </a>
+                        </div>                 
                     </div>
                     </div>
                 </div>
@@ -58,13 +73,9 @@
             {% else %}
             <p class="no-plants text-center">No hay plantas cargadas en el sistema</p>
             {% endif %}
-            </div>
-        </section>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
-
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 {% endblock contenido %}

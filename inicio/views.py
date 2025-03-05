@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
 from inicio.models import Planta
-from inicio.forms import CargarPlanta, BuscarPlanta
+from inicio.forms import CargarPlanta, BuscarPlanta, ModificarPlanta
 
 def inicio(request):
     return render(request, 'inicio/inicio.html') 
@@ -38,3 +38,21 @@ def listado_de_plantas(request):
         nombre_a_buscar = formulario.cleaned_data.get('nombre')
         plantas = Planta.objects.filter(nombre__icontains=nombre_a_buscar)
     return render(request, 'inicio/listado_de_plantas.html', {'plantas' : plantas, 'formulario' : formulario})
+
+def modificar_planta(request, planta_id):
+    
+    planta = Planta.objects.get(id = planta_id)
+    
+    if request.method == "POST":
+        formulario = ModificarPlanta(request.POST, instance=planta)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect("listado_de_plantas")
+    else:
+        formulario = ModificarPlanta(instance=planta)
+    return render(request, 'inicio/modificar_planta.html', {'formulario': formulario})
+
+def eliminar_planta(request, planta_id):
+    planta = Planta.objects.get(id = planta_id)
+    planta.delete()
+    return redirect("listado_de_plantas")
