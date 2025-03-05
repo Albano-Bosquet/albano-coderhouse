@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container mt-5 py-5">
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.comentario.label_tag }}
+            {{ form.comentario }}
+        </div>
+        <button type="submit" class="btn btn-success">Agregar Comentario</button>
+    </form>
+
+    <hr>
+
+    {% if historial %}
+        <ul class="list-group">
+            {% for entrada in historial %}
+                <li class="list-group-item">
+                    <strong>{{ entrada.fecha_creacion|date:"d/m/Y H:i" }}</strong> - {{ entrada.comentario }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">No hay comentarios en el historial.</p>
+    {% endif %}
+</div>
+{% endblock contenido %}

@@ -1,5 +1,5 @@
 from django import forms
-from inicio.models import Planta
+from inicio.models import Planta, HistorialPlanta
 
 class CargarPlanta(forms.Form):
     nombre = forms.CharField(max_length=50)
@@ -18,3 +18,8 @@ class ModificarPlanta(forms.ModelForm):
     class Meta:
         model = Planta
         fields = "__all__"
+        
+class HistorialPlantaForm(forms.ModelForm):
+    class Meta:
+        model = HistorialPlanta
+        fields = ['comentario']

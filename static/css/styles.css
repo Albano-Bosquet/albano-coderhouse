@@ -23,17 +23,17 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Cambiar de height a min-height */
-    padding-top: 70px; /* Ajustar según la altura del navbar */
+    height: auto; /* Cambiado de min-height: 100vh; */
+    padding-top: 70px; /* Ajustar según el navbar */
 }
 
 .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Cambiar de height a min-height */
-    padding-top: 70px; /* Ajustar según la altura del navbar */
+    width: 350px;
+    max-height: 80vh;
+    overflow: auto;
+    z-index: 2;
 }
+
 
 /* Caja del formulario */
 .form-container {
@@ -89,4 +89,3 @@ button {
 button:hover {
     background-color: #218838;
 }
-

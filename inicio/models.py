@@ -12,3 +12,11 @@ class Planta(models.Model):
     
     def __str__(self):
         return f'{self.nombre}, {self.tipo}'
+    
+class HistorialPlanta(models.Model):
+    planta = models.ForeignKey(Planta, on_delete=models.CASCADE, related_name='historial')
+    comentario = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Historial de {self.planta.nombre} - {self.fecha_creacion.strftime("%d/%m/%Y %H:%M")}'

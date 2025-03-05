@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime
-from inicio.models import Planta
-from inicio.forms import CargarPlanta, BuscarPlanta, ModificarPlanta
+from inicio.models import Planta, HistorialPlanta
+from inicio.forms import CargarPlanta, BuscarPlanta, ModificarPlanta, HistorialPlantaForm
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 
@@ -74,3 +74,20 @@ class EliminarPlantaVista(DeleteView):
     model = Planta
     template_name = "inicio/CBV/eliminar_planta.html"
     success_url = reverse_lazy('listado_de_plantas')
+    
+
+def historial_planta(request, planta_id):
+    planta = get_object_or_404(Planta, id=planta_id)
+    historial = planta.historial.all().order_by('-fecha_creacion')  # Ordenar por fecha descendente
+
+    if request.method == 'POST':
+        form = HistorialPlantaForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.planta = planta
+            comentario.save()
+            return redirect('historial_planta', planta_id=planta.id)
+    else:
+        form = HistorialPlantaForm()
+
+    return render(request, 'inicio/historial_planta.html', {'planta': planta, 'historial': historial, 'form': form})

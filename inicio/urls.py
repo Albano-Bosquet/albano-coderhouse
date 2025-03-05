@@ -1,4 +1,4 @@
-from inicio.views import inicio, crear_planta, listado_de_plantas, ModificarPlantaVista, EliminarPlantaVista
+from inicio.views import inicio, crear_planta, listado_de_plantas, ModificarPlantaVista, EliminarPlantaVista, historial_planta
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -13,6 +13,7 @@ urlpatterns = [
     #Clases basadas en vistas
     path('modificar_planta/<int:pk>', ModificarPlantaVista.as_view(), name='modificar_planta'),
     path('eliminar_planta/<int:pk>', EliminarPlantaVista.as_view(), name='eliminar_planta'),
+    path('historial/<int:planta_id>/', historial_planta, name='historial_planta'),
 ]
 
 if settings.DEBUG:
