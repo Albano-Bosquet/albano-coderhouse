@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="main-content">
+    <div class="form-container">
+        <h3>ELIMINACION DE PLANTA</h3>
+        <div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>¿Seguro desea eliminar la planta {{planta.nombre}}?</p>
+        </div>
+        <div class="botones">
+            <button type="button" onclick="window.history.back();" class="btn-confirmar">Volver atrás</button>
+            <input type="submit" class="btn-confirmar" value="Confirmar">
+        </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-confirmar {
+        background-color: #4CAF50;  /* Color de fondo */
+        color: white;               /* Color del texto */
+        padding: 10px 20px;         /* Relleno */
+        border: none;               /* Eliminar borde */
+        border-radius: 5px;         /* Bordes redondeados */
+        cursor: pointer;           /* Cambiar el cursor al pasar por encima */
+        font-size: 16px;            /* Tamaño de la fuente */
+        transition: background-color 0.3s;  /* Transición suave para el color de fondo */
+        width: 200px;               /* Ancho fijo para los botones */
+    }
+
+    .btn-confirmar:hover {
+        background-color: #45a049;  /* Color de fondo al pasar el ratón */
+    }
+
+    .botones {
+        display: flex;              /* Usamos flexbox */
+        gap: 10px;                  /* Espacio entre los botones */
+        justify-content: center;    /* Centra los botones */
+        margin-top: 20px;           /* Espaciado superior */
+    }
+</style>
+
+{% endblock contenido %}

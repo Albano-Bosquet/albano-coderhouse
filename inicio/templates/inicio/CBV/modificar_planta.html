@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="main-content">
+    <div class="form-container">
+        <h3>MODIFICACION DE PLANTA</h3>
+        <div>
+        <form action="" method="POST" enctype="multipart/form-data" id="modificarForm">
+            {% csrf_token %}
+            
+            {{form}}
+
+            <div class="botones">
+                <!-- Botón para volver atrás con el mismo estilo -->
+                <button type="button" onclick="window.history.back();" class="btn-confirmar">Volver atrás</button>
+                
+                <!-- Botón de Modificar -->
+                <button type="button" class="btn-confirmar" id="modificarBtn">Modificar</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+
+<!-- Estilo directamente en el HTML -->
+<style>
+    /* Estilo para los botones */
+    .btn-confirmar {
+        background-color: #4CAF50;  /* Color de fondo */
+        color: white;               /* Color del texto */
+        padding: 10px 20px;         /* Relleno */
+        border: none;               /* Eliminar borde */
+        border-radius: 5px;         /* Bordes redondeados */
+        cursor: pointer;           /* Cambiar el cursor al pasar por encima */
+        font-size: 16px;            /* Tamaño de la fuente */
+        transition: background-color 0.3s;  /* Transición suave para el color de fondo */
+        width: 200px;               /* Ancho fijo para los botones */
+    }
+
+    /* Cambiar el color de fondo cuando el botón es presionado */
+    .btn-confirmar:hover {
+        background-color: #45a049;  /* Color de fondo al pasar el ratón */
+    }
+
+    /* Estilo para los contenedores de los botones */
+    .botones {
+        display: flex;              /* Usamos flexbox */
+        gap: 10px;                  /* Espacio entre los botones */
+        justify-content: center;    /* Centra los botones */
+        margin-top: 20px;           /* Espaciado superior */
+    }
+
+    /* Estilos del Modal (cartel de confirmación) */
+    .modal {
+        display: none; /* Oculto por defecto */
+        position: fixed; /* Fijo en la pantalla */
+        z-index: 1; /* Por encima de otros elementos */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5); /* Fondo oscuro */
+        overflow: auto;
+    }
+
+    .modal-content {
+        background-color: #A9CBA3; /* Color similar al fondo del footer */
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra interna para el modal */
+        border: 3px dotted #0F260F; /* Borde similar al del footer */
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .modal-buttons button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 48%; /* Para hacer los botones del mismo tamaño */
+    }
+
+    .modal-buttons .btn-cancel {
+        background-color: #1B3B1A; /* Fondo verde oscuro como el del footer */
+        color: white;
+    }
+
+    .modal-buttons .btn-confirm {
+        background-color: #4CAF50; /* Fondo verde claro */
+        color: white;
+    }
+
+</style>
+
+<!-- Modal para la confirmación -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <h3>¿Estás seguro de los cambios realizados?</h3>
+        <div class="modal-buttons">
+            <button class="btn-cancel" id="cancelarBtn">Cancelar</button>
+            <button class="btn-confirm" id="confirmarBtn">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Script de confirmación -->
+<script>
+    const modificarBtn = document.getElementById('modificarBtn');
+    const confirmModal = document.getElementById('confirmModal');
+    const cancelarBtn = document.getElementById('cancelarBtn');
+    const confirmarBtn = document.getElementById('confirmarBtn');
+    const modificarForm = document.getElementById('modificarForm');
+
+    // Mostrar el modal cuando se hace clic en "Modificar"
+    modificarBtn.addEventListener('click', function() {
+        confirmModal.style.display = 'block'; // Mostrar el modal
+    });
+
+    // Si el usuario hace clic en "Cancelar", cerrar el modal
+    cancelarBtn.addEventListener('click', function() {
+        confirmModal.style.display = 'none'; // Ocultar el modal
+    });
+
+    // Si el usuario hace clic en "Confirmar", enviar el formulario
+    confirmarBtn.addEventListener('click', function() {
+        modificarForm.submit(); // Enviar el formulario
+    });
+</script>
+
+{% endblock contenido %}
