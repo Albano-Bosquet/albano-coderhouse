@@ -8,6 +8,9 @@ from django.urls import reverse_lazy
 def inicio(request):
     return render(request, 'inicio/inicio.html') 
 
+def aboutme(request):
+    return render(request, 'inicio/aboutme.html') 
+
 
 
 def crear_planta(request):

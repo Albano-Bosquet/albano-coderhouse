@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<div class="main-content">
-    <div class="form-container">
+<div class="main-content" style="padding: 5px;">
+    <div class="form-container" style="margin: 80px auto; border: 1px solid #ccc; border-radius: 8px; width: 80%; max-width: 600px;">
         <h3>CARGA DE NUEVA PLANTA</h3>
-        <div >
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -35,11 +34,11 @@
 
             <label for="{{ formulario.foto.id_for_label }}">Foto:</label>
             {{ formulario.foto }}
+            
             <div style='padding: 20px;'>
                 <button type="submit" class="btn btn-success">Cargar</button>
             </div>
         </form>
-    </div>
     </div>
 </div>
 

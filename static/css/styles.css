@@ -29,7 +29,6 @@ body, html {
 
 .card {
     width: 350px;
-    max-height: 80vh;
     overflow: auto;
     z-index: 2;
 }

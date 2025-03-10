@@ -2,93 +2,21 @@
 
 {% block contenido %}
 <div class="container d-flex justify-content-between align-items-center" style="height: 72vh;">
-    <div class="w-50" style="background: url('media/plantas/hojas.png') no-repeat center center/cover; height: 115%; -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%); mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);"></div>
+    <!-- Columna de la imagen -->
+    <div class="col-md-4" style="background: url('/media/plantas/hojas.png') no-repeat center center/cover; height: 110%; -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%); mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%); background-size: cover;"></div>
     
-    <div style="width: 350px; max-height: 80vh !important; overflow: auto !important; z-index: 2; padding:10px">
-        <form id="formulario" onsubmit="return validarFormulario()">
-            <!-- Formulario de  inicio de sesión -->
-            <div id="formulario-inicio">
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Correo electrónico" required>
-                </div>
-                <div class="mb-3 position-relative">
-                    <input type="password" class="form-control" placeholder="Contraseña" id="contraseña-inicio" required>
-                    <span class="position-absolute end-0 top-50 translate-middle-y px-3" style="cursor: pointer;" onclick="togglePasswordVisibility('contraseña-inicio')">
-                        <i class="fas fa-eye" id="eye-icon-inicio"></i>
-                    </span>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Iniciar sesión</button>
-                <hr>
-                <button type="button" class="btn btn-success w-100" onclick="mostrarFormularioRegistro()">Crear cuenta nueva</button>
+    <!-- Columna del formulario -->
+    <div class="flex-fill" style="max-height: 80vh; overflow: auto; z-index: 2; padding: 20px;">
+        <div class="main-content" style="width: 100%; max-width: 2000px; margin: 0 auto;">
+            <div class="form-container">
+                <h3 class="text-center">PLATAFORMA DE GESTION DE PLANTAS DE CANNABIS</h3>
+                <h6>En esta pagina podras:</h6>
+                <ul class="list-unstyled">
+                    <li>🔰 Cargar tus propias plantas</li>
+                    <li>🔰 Llevar un historial del cultivo</li>
+                </ul>
             </div>
-
-            <!-- Formulario de creación de cuenta -->
-            <div id="formulario-registro" style="display: none;">
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Correo electrónico" required>
-                </div>
-                <div class="mb-3">
-                    <!-- Aquí se agrega la clase 'form-control' y un borde consistente -->
-                    <input type="text" class="form-control" placeholder="Nombre de usuario" required style="border: 1px solid #ced4da;">
-                </div>
-                <div class="mb-3 position-relative">
-                    <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" required style="border: 1px solid #ced4da;">
-                    <span class="position-absolute end-0 top-50 translate-middle-y px-3" style="cursor: pointer;" onclick="togglePasswordVisibility('contraseña')">
-                        <i class="fas fa-eye" id="eye-icon"></i>
-                    </span>
-                </div>
-                <div class="mb-3 position-relative">
-                    <input type="password" class="form-control" id="repetir-contraseña" placeholder="Repetir Contraseña" required style="border: 1px solid #ced4da;">
-                    <span class="position-absolute end-0 top-50 translate-middle-y px-3" style="cursor: pointer;" onclick="togglePasswordVisibility('repetir-contraseña')">
-                        <i class="fas fa-eye" id="eye-icon-repeat"></i>
-                    </span>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Crear cuenta</button>
-                <div class="text-center mt-2">
-                    <a href="#" class="text-decoration-none" onclick="mostrarFormularioInicio()">¿Ya tienes una cuenta? Inicia sesión</a>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<script>
-    // Función para alternar visibilidad de contraseñas
-    function togglePasswordVisibility(inputId) {
-        var inputField = document.getElementById(inputId);
-        var icon = document.getElementById('eye-icon' + (inputId === 'contraseña' ? '' : '-repeat'));  // Determinamos cuál icono cambiar
-        if (inputField.type === "password") {
-            inputField.type = "text";
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            inputField.type = "password";
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    }
-
-    function mostrarFormularioRegistro() {
-        document.getElementById('formulario-inicio').style.display = 'none';
-        document.getElementById('formulario-registro').style.display = 'block';
-    }
-
-    function mostrarFormularioInicio() {
-        document.getElementById('formulario-inicio').style.display = 'block';
-        document.getElementById('formulario-registro').style.display = 'none';
-    }
-
-    function validarFormulario() {
-        const contraseña = document.getElementById('contraseña').value;
-        const repetirContraseña = document.getElementById('repetir-contraseña').value;
-
-        if (contraseña !== repetirContraseña) {
-            alert("Las contraseñas no coinciden.");
-            return false;
-        }
-
-        return true; 
-    }
-</script>
-
 {% endblock contenido %}
