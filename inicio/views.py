@@ -4,6 +4,8 @@ from inicio.models import Planta, HistorialPlanta
 from inicio.forms import CargarPlanta, BuscarPlanta, ModificarPlanta, HistorialPlantaForm
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     return render(request, 'inicio/inicio.html') 
@@ -12,7 +14,7 @@ def aboutme(request):
     return render(request, 'inicio/aboutme.html') 
 
 
-
+@login_required
 def crear_planta(request):
     formulario = CargarPlanta()
     
@@ -35,6 +37,7 @@ def crear_planta(request):
     
     return render(request, 'inicio/crear_planta.html', {'formulario' : formulario})
 
+@login_required
 def listado_de_plantas(request):
     plantas = Planta.objects.all()
     formulario = BuscarPlanta(request.GET)
@@ -67,13 +70,13 @@ def listado_de_plantas(request):
 
 #Clases basadas en vistas
 
-class ModificarPlantaVista(UpdateView):
+class ModificarPlantaVista(LoginRequiredMixin, UpdateView):
     model = Planta
     template_name = "inicio/CBV/modificar_planta.html"
     fields = "__all__"
     success_url = reverse_lazy('listado_de_plantas')
     
-class EliminarPlantaVista(DeleteView):
+class EliminarPlantaVista(LoginRequiredMixin, DeleteView):
     model = Planta
     template_name = "inicio/CBV/eliminar_planta.html"
     success_url = reverse_lazy('listado_de_plantas')

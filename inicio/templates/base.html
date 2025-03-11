@@ -14,28 +14,42 @@
         <div class="container-fluid">
             <a class="navbar-brand" href={% url "inicio" %}>MENDOCANN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href={% url "crear_planta" %}>Cargar planta</a>
-                <a class="nav-link" href={% url "listado_de_plantas" %}>Listado de plantas</a>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <a class="btn btn-outline-dark mt-auto" href="{% url 'login'  %}"
-                                    style="transition: 0.3s; border-color: black;" 
-                                    onmouseover="this.style.backgroundColor='gray'; this.style.color='white'; this.style.borderColor='black';" 
-                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';">
-                                    Iniciar sesion
+                <div class="navbar-nav">
+                    <a class="nav-link" href={% url "crear_planta" %}>Cargar planta</a>
+                    <a class="nav-link" href={% url "listado_de_plantas" %}>Listado de plantas</a>
+                </div>
+
+
+                
+                <div class="navbar-nav ms-auto">
+                {% if  request.user.is_authenticated%}
+                <form action={% url "logout" %} method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-outline-dark mt-auto mx-2" style="transition: 0.3s; border-color: gray;" 
+                    onmouseover="this.style.backgroundColor='red'; this.style.color='white'; this.style.borderColor='gray';" 
+                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='gray';" type="submit" value="Cerrar sesión">
+                </form>
+                <a class="nav-link" href="#">{{ request.user.username }}</a>
+                {% else %}
+                <a class="btn btn-outline-dark mt-auto mx-2" href="{% url 'login' %}"
+                style="transition: 0.3s; border-color: gray;" 
+                onmouseover="this.style.backgroundColor='green'; this.style.color='white'; this.style.borderColor='gray';" 
+                onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='gray';">
+                Iniciar sesión
                 </a>
-                <a class="btn btn-outline-dark mt-auto" href="{% url 'logout'  %}"
-                                    style="transition: 0.3s; border-color: black; marg" 
-                                    onmouseover="this.style.backgroundColor='gray'; this.style.color='white'; this.style.borderColor='black';" 
-                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';">
-                                    Cerrar sesion
+                <a class="btn btn-outline-dark mt-auto mx-2" href="{% url 'registro' %}"
+                style="transition: 0.3s; border-color: gray;" 
+                onmouseover="this.style.backgroundColor='green'; this.style.color='white'; this.style.borderColor='gray';" 
+                onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='gray';">
+                Registrarse
                 </a>
-                <a class="nav-link" href="#">{{request.user.username}}</a>
-            </div>
+                {% endif %}
+
+
+                </div>
             </div>
         </div>
     </nav>

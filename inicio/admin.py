@@ -1,3 +1,5 @@
 from django.contrib import admin
+from inicio.models import Planta, HistorialPlanta
 
-# Register your models here.
+admin.site.register(Planta)
+admin.site.register(HistorialPlanta)
