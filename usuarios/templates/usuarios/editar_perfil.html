@@ -4,8 +4,8 @@
 {% load widget_tweaks %}
 <div class="container mt-5 pt-5 d-flex justify-content-center">
     <div class="card shadow-lg p-4" style="max-width: 400px; background-color: #f8f9fa; border-radius: 15px;">
-        <h2 class="text-center mb-3" style="color: #1B3B1A;">Registro</h2>
-        <form action="{% url 'registro' %}" method="post">
+        <h2 class="text-center mb-3" style="color: #1B3B1A;">Editar Perfil</h2>
+        <form action="{% url 'editar_perfil' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
             <div class="mb-3">
@@ -33,11 +33,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="{{ form.password1.id_for_label }}" class="form-label">{{ form.password1.label }}</label>
-                {{ form.password1|add_class:"form-control rounded-3" }}
-                {% if form.password1.errors %}
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">{{ form.first_name.label }}</label>
+                {{ form.first_name|add_class:"form-control rounded-3" }}
+                {% if form.first_name.errors %}
                     <div class="text-danger">
-                        {% for error in form.password1.errors %}
+                        {% for error in form.first_name.errors %}
                             <p>{{ error }}</p>
                         {% endfor %}
                     </div>
@@ -45,19 +45,35 @@
             </div>
 
             <div class="mb-3">
-                <label for="{{ form.password2.id_for_label }}" class="form-label">{{ form.password2.label }}</label>
-                {{ form.password2|add_class:"form-control rounded-3" }}
-                {% if form.password2.errors %}
+                <label for="{{ form.last_name.id_for_label }}" class="form-label">{{ form.last_name.label }}</label>
+                {{ form.last_name|add_class:"form-control rounded-3" }}
+                {% if form.last_name.errors %}
                     <div class="text-danger">
-                        {% for error in form.password2.errors %}
+                        {% for error in form.last_name.errors %}
                             <p>{{ error }}</p>
                         {% endfor %}
                     </div>
                 {% endif %}
             </div>
 
+            <div class="mb-3">
+                <label for="avatar" class="form-label">Avatar</label>
+                {{ form.avatar|add_class:"form-control rounded-3" }}
+                {% if form.avatar.errors %}
+                    <div class="text-danger">
+                        {% for error in form.avatar.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <a href="{% url 'cambiar_pass' %}">Cambiar contraseña</a>
+            </div>
+
             <div class="text-center">
-                <input type="submit" class="btn btn-success w-100" value="Registrarse" style="transition: 0.3s; border-color: gray;" 
+                <input type="submit" class="btn btn-success w-100" value="Guardar cambios" style="transition: 0.3s; border-color: gray;" 
                 onmouseover="this.style.backgroundColor='green'; this.style.color='white'; this.style.borderColor='gray';" 
                 onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='gray';">
             </div>

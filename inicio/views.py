@@ -13,6 +13,10 @@ def inicio(request):
 def aboutme(request):
     return render(request, 'inicio/aboutme.html') 
 
+def descripcion_planta(request, planta_id):
+    planta = get_object_or_404(Planta, id=planta_id)
+    return render(request, 'inicio/descripcion_planta.html', {'planta': planta})
+
 
 @login_required
 def crear_planta(request):

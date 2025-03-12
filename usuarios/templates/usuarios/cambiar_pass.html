@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+{% load widget_tweaks %}
+<div class="container mt-5 pt-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4" style="max-width: 400px; background-color: #f8f9fa; border-radius: 15px;">
+        <h2 class="text-center mb-3" style="color: #1B3B1A;">Editar Contraseña</h2>
+        <form action="{% url 'cambiar_pass' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="{{ form.old_password.id_for_label }}" class="form-label">Contraseña anterior</label>
+                {{ form.old_password|add_class:"form-control rounded-3" }}
+                {% if form.old_password.errors %}
+                    <div class="text-danger">
+                        {% for error in form.old_password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.new_password1.id_for_label }}" class="form-label">Nueva contraseña</label>
+                {{ form.new_password1|add_class:"form-control rounded-3" }}
+                {% if form.new_password1.errors %}
+                    <div class="text-danger">
+                        {% for error in form.new_password1.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="{{ form.new_password2.id_for_label }}" class="form-label">Confirmar nueva contraseña</label>
+                {{ form.new_password2|add_class:"form-control rounded-3" }}
+                {% if form.new_password2.errors %}
+                    <div class="text-danger">
+                        {% for error in form.new_password2.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+
+            <div class="text-center">
+                <input type="submit" class="btn btn-success w-100" value="Guardar cambios" style="transition: 0.3s; border-color: gray;" 
+                onmouseover="this.style.backgroundColor='green'; this.style.color='white'; this.style.borderColor='gray';" 
+                onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='gray';">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock contenido %}

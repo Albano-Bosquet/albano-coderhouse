@@ -34,7 +34,6 @@
                                 {% if planta.foto and planta.foto.url %}
                                 <img class="card-img-top" src="{{planta.foto.url}}" alt="Imagen de {{planta.nombre}}" />
                                 {% endif %}
-                                <!--<p class="card-text">{{planta.descripcion}}</p>-->
                                 <ul class="list-unstyled">
                                     <li>🔰 Tipo: {{planta.tipo}}</li>
                                     <li>🔰 Contenido THC: {{planta.contenido_thc}}%</li>
@@ -55,23 +54,23 @@
                                 </div>       
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center gap-2">
                                     <a class="btn btn-outline-dark mt-auto" href="{% url 'modificar_planta' planta.id %}"
-                                    style="transition: 0.3s; border-color: black;" 
-                                    onmouseover="this.style.backgroundColor='blue'; this.style.color='white'; this.style.borderColor='black';" 
-                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';">
+                                    style="transition: 0.3s; border-color: gray;" 
+                                    onmouseover="this.style.backgroundColor='blue'; this.style.color='white'; this.style.borderColor='gray';" 
+                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='gray'; this.style.borderColor='gray';">
                                     Modificar planta
                                     </a>
 
                                     <a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar_planta' planta.id %}"
-                                    style="transition: 0.3s; border-color: black;" 
-                                    onmouseover="this.style.backgroundColor='red'; this.style.color='white'; this.style.borderColor='black';" 
-                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';">
+                                    style="transition: 0.3s; border-color: gray;" 
+                                    onmouseover="this.style.backgroundColor='red'; this.style.color='white'; this.style.borderColor='gray';" 
+                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='gray'; this.style.borderColor='gray';">
                                     Eliminar planta
                                     </a>
 
-                                    <a class="btn btn-outline-dark mt-auto" href="{% url 'eliminar_planta' planta.id %}"
-                                    style="transition: 0.3s; border-color: black;" 
-                                    onmouseover="this.style.backgroundColor='gray'; this.style.color='white'; this.style.borderColor='black';" 
-                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='black'; this.style.borderColor='black';">
+                                    <a class="btn btn-outline-dark mt-auto" href="{% url 'descripcion_planta' planta.id %}"
+                                    style="transition: 0.3s; border-color: gray;" 
+                                    onmouseover="this.style.backgroundColor='gray'; this.style.color='white'; this.style.borderColor='gray';" 
+                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='gray'; this.style.borderColor='gray';">
                                     Descripcion de genética
                                     </a>
                                 </div>                 

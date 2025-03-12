@@ -2,7 +2,7 @@
 
 {% block contenido %}
 <div class="container d-flex justify-content-center align-items-center" style="height: 72vh;">
-    <div style="width: 350px; max-height: 80vh !important; overflow: auto !important; z-index: 2; padding:10px">
+    <div class="p-4 rounded-5 shadow-sm d-inline-block text-dark" style="background-color: white; border: 3px solid #A9CBA3; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); width: 350px; max-height: 80vh; overflow: auto;">
         <form id="formulario" method="post">
             {% csrf_token %}
             <div id="formulario-inicio">
