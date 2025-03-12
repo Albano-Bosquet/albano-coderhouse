@@ -12,8 +12,8 @@ Desde aquí podrás ingresar los datos principales de las plantas de tu cultivo 
 
 ### 🔷 LISTADO DE PLANTAS
 Podrás visualizar los datos cargados anteriormente de tus queridas amigas
+![3](https://github.com/user-attachments/assets/112a6039-e259-4374-bc77-f26fed4dc23d)
 
-![3](https://github.com/user-attachments/assets/6d609ae3-f2c1-4bf7-80d3-0ad95d3f59cb)
 
 ### 🔷 HISTORIAL DE PLANTAS
 Puedes, por supuesto, visualizar un historial de cada planta, para llevar un registro de todo lo que haces!
